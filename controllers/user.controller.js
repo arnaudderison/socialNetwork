@@ -27,7 +27,7 @@ module.exports.updateUser = async (req, res) => {
 
     try {
         userInfo = await userModel.findByIdAndUpdate(
-            { _id: req.params.id },
+            req.params.id,
             {
                 $set: {
                     bio: req.body.bio
