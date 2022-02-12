@@ -25,10 +25,11 @@ module.exports.signInErrors = (err) => {
 }
 
 module.exports.uploadErrors = (err) => {
-    let errors = { format: '', maxSize: '' }
+    let errors = { format: '', maxSize: '', bdd: "" }
 
-    if(err.message.includes('Invalide File')) errors.format = "Le format de l'image n'est pas prit en charge !"
+    if(err.message.includes('Invalid File')) errors.format = "Le format de l'image n'est pas prit en charge !"
     if(err.message.includes('Max size')) errors.maxSize = "Votre image est trop volumineuse"
+    if(err.message.includes('bddError')) errors.bdd = err
 
     return errors
 }

@@ -11,9 +11,27 @@ module.exports.readPost = (req, res) => {
 }
 
 module.exports.createPost = async (req, res) => {
+    let fileName;
+
+    if (req.files) {
+        if (
+            req.files.filePost.mimetype != 'image/jpeg' &&
+            req.files.filePost.mimetype != 'image/jpg' &&
+            req.files.filePost.mimetype != 'image/png'
+        ) throw Error('Invalid File')
+
+        if (req.files.filePost.size > 500000) throw Error('Invalid Size')
+        let file = req.files.filePost
+
+        fileName = req.body.posterId + Date.now() + '.jpg'
+
+        file.mv(`${__dirname}/../client/public/upload/posts/${fileName}`);
+    }
+
     const newPost = new postModel({
         posterId: req.body.posterId,
         message: req.body.message,
+        picture: req.files ? "./upload/posts/" + fileName : "",
         video: req.body.video,
         likers: [],
         comments: [],
@@ -154,7 +172,6 @@ module.exports.editCommentPost = (req, res) => {
                     if (!err) return res.status(200).send(docs)
                     return res.status(500).send('ERROR')
                 })
-
             }
         )
 

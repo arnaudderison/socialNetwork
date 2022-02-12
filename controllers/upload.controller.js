@@ -20,10 +20,19 @@ module.exports.uploadProfil = async (req, res) => {
 
         file.mv(`${__dirname}/../client/public/upload/profil/${fileName}`);
 
-        res.send('File Upload')
+        userModel.findByIdAndUpdate(
+            req.body.userId,
+            { $set: { picture: './upload/profil/' + fileName } },
+            { new: true, upsert: true },
+            (err, docs) => {
+                if (!err) return res.send(docs)
+                else res.status(500).json(err)
+            }
+        )
 
     } catch (err) {
         errors = uploadErrors(err)
-        return res.status(400).json( errors )
+        return res.status(400).json(errors)
     }
+
 }
