@@ -21,7 +21,10 @@ app.use(cookieParser())
 app.use(fileUpload({
     createParentPath: true
 }));
-app.use(cors(process.env.API_CONNECT));
+app.use(cors({
+    origin: `${process.env.API_CONNECT}`,
+    credentials: true,
+}));
 app.use(morgan('dev'));
 
 //jwt

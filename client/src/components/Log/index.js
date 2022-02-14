@@ -17,14 +17,15 @@ function Log(props) {
     }
 
     return (
-        <div className='connection-form'>
-            <div className='form-container'>
-                <ul>
-                    <li onClick={handleModals} id="register" className={signUpModal ? "active-btn" : null}>S'inscrire</li>
-                    <li onClick={handleModals} id="login" className={signInModal ? "active-btn" : null}>Se connecter</li>
-                </ul>
+        <div className='connection-form center'>
+            <div className='card-container'>
                 {signUpModal && <SignUpForm />}
                 {signInModal && <SignInForm />}
+                <ul>
+                    <li onClick={handleModals} id="register" className={`link ${signUpModal ? "hidden" : null}`}><p>Tu n'es pas encore de compte ?</p> Inscrit-toi </li>
+                    <li onClick={handleModals} id="login" className={`link ${signInModal ? "hidden" : null}`}><p>Tu as déjà un compte ?</p> connecte-toi !</li>
+                </ul>
+
             </div>
         </div>
     )

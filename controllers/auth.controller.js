@@ -25,6 +25,7 @@ module.exports.signUp = async (req, res) => {
 
 module.exports.signIn = async (req, res) => {
     const { email, password } = req.body
+    console.log(req.body)
 
     try {
         const user = await userModel.login(email, password);
@@ -34,7 +35,7 @@ module.exports.signIn = async (req, res) => {
         res.status(200).json({ user: user._id })
     } catch (err) {
         const errors = signInErrors(err)
-        res.status(500).json({ errors })
+        res.status(201).json({ errors })
     }
 }
 

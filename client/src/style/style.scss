@@ -3,6 +3,9 @@
 //Dossier base
 @import './base/reset';
 //Dossier composants
+@import './components/cards';
+@import './components/input-btn';
+@import './components/form-register';
 //Dossier pages
 @import './pages/home';
 @import './pages/profil';
