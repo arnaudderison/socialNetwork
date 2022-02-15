@@ -7,22 +7,29 @@ function Navbar() {
     return (
         <div className='nav-container'>
             <div className='logo'>
-                <Link to='/' replace>
+                <nobr><Link to='/' replace className='logo-img'>
                     Derison.A <sup><img src='./images/tm-image.svg' alt='TM' width="20em" /></sup>
-                </Link>
+                </Link></nobr>
             </div>
 
             {uid ? (
                 <ul>
                     <li>
-                        <Link to="/" replace>
-                            Bienvenue 'prenom'
+                        <Link to="/profil" replace>
+                            <nobr><p className='text-welkom'>[Nom_d'utilisateur]</p></nobr>
+                        </Link>
+                    </li>
+                    <img className='logout-img' src="./images/login.svg" alt='' width="20em" />
+                </ul>
+            ) : (
+                <ul>
+                    <li>
+                        <Link to="/profil" replace>
+                            <img className='login-img' src="./images/login.svg" alt='' width="25em" />
                         </Link>
                     </li>
                 </ul>
-            ): (
-                <>rien</>
-                )}
+            )}
         </div>
     )
 }

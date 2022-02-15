@@ -2,4 +2,25 @@
     width: 100%;
     border-bottom: 1px solid $link;
     padding: 0 0 5px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+ul{
+    display: flex;
+    margin: 0 10px;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+ul li {
+    margin: 10px;
+    font-style: italic;
+    font-size: 1rem;
+}
+.logo-img{
+    font-size: 2em;
+    font-family: 'Syne Tactile', cursive;
+}
+.logout-img{
+    transform: rotate(180deg);
 }

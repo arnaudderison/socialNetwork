@@ -28,8 +28,13 @@ input[type="text"],input[type="password"],input[type="email"]{
     }
 }
 .nav-container  a{
-    font-family: 'Syne Tactile', cursive;
     text-decoration: none;
-    font-size: 2em;
     color: $text-color;
 }
+.text-welkom{
+    max-width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
