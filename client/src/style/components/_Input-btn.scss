@@ -27,3 +27,9 @@ input[type="text"],input[type="password"],input[type="email"]{
         border: 1px solid $link;
     }
 }
+.nav-container  a{
+    font-family: 'Syne Tactile', cursive;
+    text-decoration: none;
+    font-size: 2em;
+    color: $text-color;
+}

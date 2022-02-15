@@ -1,8 +1,14 @@
 .connection-form{
     display: grid;
     justify-content: center;
+    margin-top: 10em;  
 }
-.center{
-    height: 100vh;
-    align-items: center;
-}
+
+@media screen and (max-width: 600px) {
+    .connection-form{
+        margin-top: 4em;
+    }
+    .card-container{
+        border: none;
+    }
+  }
