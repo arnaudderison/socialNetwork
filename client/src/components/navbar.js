@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UidContext } from './AppContext'
+import Logout from './Log/logout';
 
 function Navbar() {
     const uid = useContext(UidContext);
@@ -19,7 +20,7 @@ function Navbar() {
                             <nobr><p className='text-welkom'>[Nom_d'utilisateur]</p></nobr>
                         </Link>
                     </li>
-                    <img className='logout-img' src="./images/login.svg" alt='' width="20em" />
+                    <Logout/>
                 </ul>
             ) : (
                 <ul>
