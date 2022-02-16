@@ -10,7 +10,7 @@ function UpdateProfil() {
                     <h1>{userData.pseudo}</h1>
                 </div>
                 <div className='update-container'>
-                    <img src={`images/ ${userData.picture}`}/>
+                    <img src={userData.picture}/>
                 </div>
             </div>
         </div>
