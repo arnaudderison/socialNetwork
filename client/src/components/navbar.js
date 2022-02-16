@@ -1,10 +1,14 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UidContext } from './AppContext'
+import { useSelector } from 'react-redux';
 import Logout from './Log/logout';
 
 function Navbar() {
     const uid = useContext(UidContext);
+    const userData = useSelector( (state) => state.userReducer)
+
+    
     return (
         <div className='nav-container'>
             <div className='logo'>
@@ -17,7 +21,7 @@ function Navbar() {
                 <ul>
                     <li>
                         <Link to="/profil" replace>
-                            <nobr><p className='text-welkom'>[Nom_d'utilisateur]</p></nobr>
+                            <nobr><p className='text-welkom'>{userData.pseudo}</p></nobr>
                         </Link>
                     </li>
                     <Logout/>
