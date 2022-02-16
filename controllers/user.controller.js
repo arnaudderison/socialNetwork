@@ -81,6 +81,7 @@ module.exports.follow = async (req, res) => {
 
 module.exports.unfollow = async (req, res) => {
     if (!objectID.isValid(req.params.id) || !objectID.isValid(req.body.idToUnfollow))
+        
         return res.status(400).send('ID unknown: ' + req.params.id)
 
     try {
