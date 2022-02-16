@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import UploadPdp from './uploadimg';
 
 function UpdateProfil() {
     const userData = useSelector((state) => state.userReducer)
@@ -10,8 +11,9 @@ function UpdateProfil() {
                     <h1>{userData.pseudo}</h1>
                 </div>
                 <div className='update-container'>
-                    <img src={userData.picture}/>
+                    <img src={userData.picture} alt=""/>
                 </div>
+                <UploadPdp/>
             </div>
         </div>
     )
