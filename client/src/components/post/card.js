@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
-import { DateParse, isEmpty } from '../utils';
+import { isEmpty } from '../utils';
 import FollowHandler from '../../components/profil/followHandler'
+import LikeButton from './likeButton';
 
 function Card({ post }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -81,11 +81,10 @@ function Card({ post }) {
 
                             <div className='post-card-footer'>
                                 <div className='comment-icon'>
-                                    <img src='./images/commentaire.svg'/>
+                                    <img src='./images/commentaire.svg'/><span>{post.comments.length}</span>
                                 </div>
-                                <div className='like-icon'>
-                                    <img src='./images/like.svg'/>
-                                </div>
+                                
+                                    <LikeButton post={post}/>
                                 <div className='share-icon'>
                                     <img src='./images/share.svg'/>
                                 </div>

@@ -26,8 +26,12 @@ function UpdateProfil() {
         if (followingPopup) setFollowingPopup(!followingPopup);
         setFollowersPopup(!followersPopup);
     }
+    function handlePopup(){
+        if(followingPopup) setFollowingPopup(!followingPopup)
+        if (followersPopup) setFollowersPopup(!followersPopup)
+    }
     return (
-        <div className='container-profil card-container'>
+        <div className='container-profil card-container' onClick={handlePopup}>
 
             <div className='box-profil'>
                 <div className='update-container'>
