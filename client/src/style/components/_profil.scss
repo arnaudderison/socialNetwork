@@ -124,26 +124,28 @@
                 margin-right: 10px;
             }
         }
-        .follow-handler{
-            div{
-                transform: translateY(-5px);
-                background-color: transparent;
-                button{
-                    padding: 5px;
-                    border: 2px solid $text-color;
-                    background: none;
-                    border-radius: 5px;
-                    color: $text-color;
-                    font-weight: bolder;
-                }
-            }
-        }
     }
 }
+
 .card-container{
     width: 100%;
     margin: auto;
 }
+.btn-add{
+    width: 75px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border: 2px solid $text-color;
+    border-radius: 5px;
+    justify-content: center;
+    button{
+        background-color: transparent;
+        color: $text-color;
+        text-align: center;
+    }
+}
+
 @media screen and (min-width: 600px){
     .card-container{
          margin-top: 5em;

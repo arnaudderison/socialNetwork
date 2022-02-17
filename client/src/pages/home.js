@@ -1,11 +1,17 @@
 import React from 'react'
+import Thread from '../components/thread'
 
-function home() {
+function Home() {
     return (
-        <div>
-            coucou depuis home
+        <div className='home'>
+           <div className='New-post'>
+
+           </div>
+           <div className='main'>
+                <Thread/>
+           </div>
         </div>
     )
 }
 
-export default home
+export default Home
