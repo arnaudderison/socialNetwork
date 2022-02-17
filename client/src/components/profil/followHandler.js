@@ -27,16 +27,16 @@ function FollowHandler({ idToFollow }) {
     return (
         <>
             {isFollowed && !isEmpty(userData) &&(
-                <span onClick={handleUnFollow}>
+                <div onClick={handleUnFollow} className="btn">
                     <button>Abonné(e)</button>
-                </span>
+                </div>
             )}
 
             {
                 isFollowed === false && !isEmpty(userData) &&(
-                    <span onClick={handleFollow}>
+                    <div onClick={handleFollow} className="btn">
                         <button>S'abonner</button>
-                    </span>
+                    </div>
                 )
             }
 
