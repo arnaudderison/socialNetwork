@@ -6,15 +6,28 @@ import Card from './post/card';
 
 function Thread() {
     const [loadPost, setLoadPost] = useState(true);
+    const [count, setCount] = useState(7);
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.postReducer)
 
+    function loadMore(){
+        if(window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight){
+            setLoadPost(true)
+            
+        }
+    }
+
     useEffect(() => {
         if (loadPost) {
-            dispatch(getPost())
+            dispatch(getPost(count))
             setLoadPost(false)
+            setCount(count + 7)
         }
-    }, [dispatch, setLoadPost, loadPost])
+        
+
+        window.addEventListener('scroll', loadMore);
+        return () => window.removeEventListener('scroll', loadMore)
+    }, [dispatch, setLoadPost, loadPost, count])
     return (
         <div className='tread-container'>
             <ul>

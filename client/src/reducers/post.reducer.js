@@ -1,5 +1,5 @@
 
-import { GET_POSTS, LIKE_POST, UNLIKE_POST } from "../actions/post.action"
+import { EDIT_POST, GET_POSTS, LIKE_POST, UNLIKE_POST } from "../actions/post.action"
 
 const initialState = {}
 
@@ -27,6 +27,15 @@ export default function postReducer(state = initialState, action) {
                     }
                 }
                 return post
+            })
+        case EDIT_POST:
+            return state.map((post) =>{
+                if(post._id === action.payload.postId){
+                    return {
+                        ...post,
+                        message: action.payload.message
+                    }
+                }
             })
         default:
             return state

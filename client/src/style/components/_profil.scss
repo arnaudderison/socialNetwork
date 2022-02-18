@@ -121,6 +121,9 @@
         .userInfo{
             display: flex;
             img{
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
                 margin-right: 10px;
             }
         }
@@ -139,10 +142,12 @@
     border: 2px solid $text-color;
     border-radius: 5px;
     justify-content: center;
+    cursor: pointer;
     button{
         background-color: transparent;
         color: $text-color;
         text-align: center;
+        cursor: pointer;
     }
 }
 

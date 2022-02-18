@@ -1,13 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { isEmpty } from '../utils';
 import FollowHandler from '../../components/profil/followHandler'
 import LikeButton from './likeButton';
+import { editPost } from '../../actions/post.action';
 
 function Card({ post }) {
     const [isLoading, setIsLoading] = useState(true);
+
+    const [messageInModification, setMessageInModification] = useState(false);
+    const [newMessage, setnewMessage] = useState(null);
+
     const usersData = useSelector((state) => state.usersReducer)
     const userData = useSelector((state) => state.userReducer)
+    const dispatch = useDispatch();
+
+    function handleMessageIsUser() {
+        if(post.posterId === userData._id){
+            setMessageInModification(true)
+        }
+    }
+    function messageMofie(){
+        if(isEmpty(newMessage)){
+            dispatch(editPost(post._id, userData.message))
+            setMessageInModification(false)
+        }else{
+            dispatch(editPost(post._id, newMessage))
+            setMessageInModification(false)
+        }
+    }
 
     useEffect(() => {
         !isEmpty(usersData[0]) && setIsLoading(false);
@@ -44,7 +65,6 @@ function Card({ post }) {
                                         </h3>
 
                                         <span>
-
                                             {
                                                 !isEmpty(usersData[0]) && usersData.map((user) => {
                                                     if (user._id === post.posterId) {
@@ -54,9 +74,7 @@ function Card({ post }) {
                                                     }
                                                 })
                                             }
-
                                         </span>
-
                                     </div>
                                     <span>
                                         {
@@ -66,8 +84,26 @@ function Card({ post }) {
                                     </span>
 
                                 </div>
+                                {
+                                    !messageInModification && newMessage && (
+                                        <p onClick={handleMessageIsUser}>{newMessage}</p>
+                                    )
+                                }
+                                {
+                                    !messageInModification && !newMessage &&(
+                                        <p onClick={handleMessageIsUser}>{post.message}</p>
+                                    )
+                                }
+                                {messageInModification && (
+                                    <>
+                                        <textarea
+                                            defaultValue={post.message}
+                                            onChange={(e) => setnewMessage(e.target.value)}
+                                        />
+                                        <input type="submit" value="Modifier" onClick={messageMofie}/>
+                                    </>
+                                )}
 
-                                <p>{post.message}</p>
                             </div>
 
                             <div className='img'>
@@ -81,12 +117,12 @@ function Card({ post }) {
 
                             <div className='post-card-footer'>
                                 <div className='comment-icon'>
-                                    <img src='./images/commentaire.svg'/><span>{post.comments.length}</span>
+                                    <img src='./images/commentaire.svg' /><span>{post.comments.length}</span>
                                 </div>
-                                
-                                    <LikeButton post={post}/>
+
+                                <LikeButton post={post} />
                                 <div className='share-icon'>
-                                    <img src='./images/share.svg'/>
+                                    <img src='./images/share.svg' />
                                 </div>
                             </div>
                         </div>
