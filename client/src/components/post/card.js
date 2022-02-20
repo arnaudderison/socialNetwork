@@ -16,15 +16,15 @@ function Card({ post }) {
     const dispatch = useDispatch();
 
     function handleMessageIsUser() {
-        if(post.posterId === userData._id){
-            setMessageInModification(true)
+        if (post.posterId === userData._id) {
+            setMessageInModification(!messageInModification)
         }
     }
-    function messageMofie(){
-        if(isEmpty(newMessage)){
+    function messageMofie() {
+        if (newMessage === null) {
             dispatch(editPost(post._id, userData.message))
             setMessageInModification(false)
-        }else{
+        } else {
             dispatch(editPost(post._id, newMessage))
             setMessageInModification(false)
         }
@@ -32,7 +32,8 @@ function Card({ post }) {
 
     useEffect(() => {
         !isEmpty(usersData[0]) && setIsLoading(false);
-    }, [usersData])
+        if (messageInModification) document.getElementById('new-message').focus()
+    }, [usersData, messageInModification])
     return (
         <li className='card-post' key={post._id}>
             {
@@ -90,17 +91,33 @@ function Card({ post }) {
                                     )
                                 }
                                 {
-                                    !messageInModification && !newMessage &&(
+                                    !messageInModification && !newMessage && (
                                         <p onClick={handleMessageIsUser}>{post.message}</p>
                                     )
+                                }{
+                                    !messageInModification && !newMessage && !userData.message && !post.message && post.posterId === userData._id &&(
+                                        <p onClick={handleMessageIsUser}>Click pour ajouter un message</p>
+                                    )
                                 }
-                                {messageInModification && (
+                                
+                                {messageInModification && !newMessage && (
                                     <>
                                         <textarea
+                                            id='new-message'
                                             defaultValue={post.message}
                                             onChange={(e) => setnewMessage(e.target.value)}
                                         />
-                                        <input type="submit" value="Modifier" onClick={messageMofie}/>
+                                        <input type="submit" value="Modifier" onClick={messageMofie}  className='btn-next' />
+                                    </>
+                                )}
+                                {messageInModification && newMessage && (
+                                    <>
+                                        <textarea
+                                            id='new-message'
+                                            defaultValue={newMessage}
+                                            onChange={(e) => setnewMessage(e.target.value)}
+                                        />
+                                        <input type="submit" value="Modifier" onClick={messageMofie} className='btn-next'/>
                                     </>
                                 )}
 
