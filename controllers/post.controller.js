@@ -144,7 +144,7 @@ module.exports.commentPost = async (req, res) => {
                     },
                 },
             },
-            { new: true },
+            { new: true, upsert: true },
         )
 
         return res.status(200).send(response)

@@ -7,7 +7,6 @@
   max-width: 650px;
   margin: 10px 0;
 
-
   .card-post-left {
     margin: 5px;
     img {
@@ -31,16 +30,16 @@
         span {
           color: rgba(255, 255, 255, 0.575);
         }
-        span{
-            margin: 0 5px;
-            padding: 0;
+        span {
+          margin: 0 5px;
+          padding: 0;
         }
       }
       p {
-          font-style: italic;
-          margin: 0 0 10px 0;
+        font-style: italic;
+        margin: 0 0 10px 0;
       }
-      textarea{
+      textarea {
         border: 1px solid $link;
         background-color: transparent;
         color: $text-color;
@@ -56,30 +55,29 @@
       display: flex;
       font-size: 1rem;
       margin: 0 0 5px 7px;
-      
     }
 
-    .img{
-        max-width: 100%;
-        height: auto;
-        img{
-            width: 100%;
-            height: 100%;
-            background-size: 100% 100%;
-            border-radius: 5px;
-        }
+    .img {
+      max-width: 100%;
+      height: auto;
+      img {
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        border-radius: 5px;
+      }
     }
 
-    .post-card-footer{
-        display: flex;
-        justify-content: space-between;
-        img{
-            width: 23px;
-        }
+    .post-card-footer {
+      display: flex;
+      justify-content: space-between;
+      img {
+        width: 23px;
+      }
     }
   }
 }
-.btn-next{
+.btn-next {
   padding: 5px;
   background-color: $background-color;
   color: $text-color;
@@ -88,4 +86,88 @@
   margin: 5px;
   float: right;
   font-size: 1rem;
+}
+
+.commentaire {
+  display: grid;
+  -webkit-border-radius: 10px;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius: 10px;
+  -moz-border-radius-bottomleft: 0;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border: 1px solid $link;
+  grid-template-columns: 12% 84%;
+  width: 100%;
+  max-width: 650px;
+  margin: 10px 0;
+
+  .leftComment {
+    margin: 5px;
+    img {
+      position: relative;
+      width: 7vw;
+      max-width: 40px;
+      height: auto;
+      border-radius: 25%;
+      border: 1px solid $link;
+      background-size: 100% 100%;
+      margin-left: 3px;
+    }
+  }
+
+  .rightComment {
+    /* border: 1px solid red;*/
+    .follow {
+      margin: 5px;
+      .btn-add button {
+        font-size: 0.7rem;
+        padding: 0;
+      }
+      .btn-add {
+        padding: 3px;
+        border: 1px solid $text-color;
+      }
+    }
+  }
+  .commentHeader {
+    display: flex;
+    justify-content: space-between;
+    .titre {
+      display: flex;
+    }
+    p {
+      margin: 5px;
+    }
+    .commentText {
+      margin: 5px;
+    }
+  }
+}
+.client {
+  background-color: rgba(0, 132, 255, 0.301);
+  border: 2px solid $link;
+}
+.form-comment{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  input{
+    margin: 5px;
+  }
+  input[type="submit"]{
+    background-color: $background-color;
+    border: none;
+    color: $text-color;
+    padding: 3px;
+    font-weight: bolder;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card-post {
+    border: none;
+    border-bottom: 1px solid $link;
+    border-radius: 0;
+  }
 }

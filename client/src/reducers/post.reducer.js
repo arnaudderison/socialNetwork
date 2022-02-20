@@ -1,5 +1,5 @@
 
-import { EDIT_POST, GET_POSTS, LIKE_POST, UNLIKE_POST } from "../actions/post.action"
+import { ADD_COMMENT, EDIT_POST, GET_POSTS, LIKE_POST, UNLIKE_POST } from "../actions/post.action"
 
 const initialState = {}
 
@@ -37,6 +37,7 @@ export default function postReducer(state = initialState, action) {
                     }
                 }
             })
+
         default:
             return state
     }

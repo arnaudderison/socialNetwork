@@ -4,12 +4,15 @@ import { isEmpty } from '../utils';
 import FollowHandler from '../../components/profil/followHandler'
 import LikeButton from './likeButton';
 import { editPost } from '../../actions/post.action';
+import Comment from './commentCard';
 
 function Card({ post }) {
     const [isLoading, setIsLoading] = useState(true);
 
     const [messageInModification, setMessageInModification] = useState(false);
     const [newMessage, setnewMessage] = useState(null);
+
+    const [showComment, setShowComment] = useState(false);
 
     const usersData = useSelector((state) => state.usersReducer)
     const userData = useSelector((state) => state.userReducer)
@@ -95,11 +98,11 @@ function Card({ post }) {
                                         <p onClick={handleMessageIsUser}>{post.message}</p>
                                     )
                                 }{
-                                    !messageInModification && !newMessage && !userData.message && !post.message && post.posterId === userData._id &&(
+                                    !messageInModification && !newMessage && !userData.message && !post.message && post.posterId === userData._id && (
                                         <p onClick={handleMessageIsUser}>Click pour ajouter un message</p>
                                     )
                                 }
-                                
+
                                 {messageInModification && !newMessage && (
                                     <>
                                         <textarea
@@ -107,7 +110,7 @@ function Card({ post }) {
                                             defaultValue={post.message}
                                             onChange={(e) => setnewMessage(e.target.value)}
                                         />
-                                        <input type="submit" value="Modifier" onClick={messageMofie}  className='btn-next' />
+                                        <input type="submit" value="Modifier" onClick={messageMofie} className='btn-next' />
                                     </>
                                 )}
                                 {messageInModification && newMessage && (
@@ -117,7 +120,7 @@ function Card({ post }) {
                                             defaultValue={newMessage}
                                             onChange={(e) => setnewMessage(e.target.value)}
                                         />
-                                        <input type="submit" value="Modifier" onClick={messageMofie} className='btn-next'/>
+                                        <input type="submit" value="Modifier" onClick={messageMofie} className='btn-next' />
                                     </>
                                 )}
 
@@ -133,7 +136,7 @@ function Card({ post }) {
                             </div>
 
                             <div className='post-card-footer'>
-                                <div className='comment-icon'>
+                                <div className='comment-icon' onClick={()=> setShowComment(!showComment)}>
                                     <img src='./images/commentaire.svg' /><span>{post.comments.length}</span>
                                 </div>
 
@@ -142,6 +145,8 @@ function Card({ post }) {
                                     <img src='./images/share.svg' />
                                 </div>
                             </div>
+
+                            {showComment && <Comment post={post} />}
                         </div>
                     </>
                 )
