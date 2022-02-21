@@ -12,7 +12,7 @@ function CommenteGestion({ post, comment }) {
 
     const dispatch = useDispatch();
 
-    const  deleteCommentPost = (commentID) =>{
+    const deleteCommentPost = (commentID) => {
         dispatch(deleteComment(post._id, commentID))
     }
 
@@ -27,16 +27,16 @@ function CommenteGestion({ post, comment }) {
 
     }, [uid, comment.commenterId])
     return (
-        <div className='Comment-Delete'>
-            {
-                isConnect &&
-                (
-                    <span className='cross' onClick={() => deleteCommentPost(comment._id)}>
-                        &#10005;
-                    </span>
-                )
-            }
-        </div>
+
+
+        isConnect &&
+        (
+            <span className='cross' onClick={() => deleteCommentPost(comment._id)}>
+                &#10005;
+            </span>
+        )
+
+
 
     )
 }

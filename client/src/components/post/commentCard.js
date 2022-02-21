@@ -72,7 +72,7 @@ function Comment({ post }) {
             })}
             {userData._id && (
                 <form onSubmit={handleComment} className='form-comment'>
-                    <input type='text' name='text' onChange={(e) => setText(e.target.value)} value={text} placeholder="Votre commentaire..." />
+                    <input type='text' name='text' autoComplete="off" onChange={(e) => setText(e.target.value)} value={text} placeholder="Votre commentaire..." />
                     <input type='submit' value='Envoyer' className='btn-add' />
                 </form>
             )}

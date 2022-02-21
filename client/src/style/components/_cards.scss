@@ -4,12 +4,17 @@
     border: 1px solid $link;
     border-radius: 15px;
 
+    
     p{
         text-align: left;
         margin: 5px;
         font-size: .8rem;
         color: $text-color;
     }
+    ul li p{
+        text-align: center;
+    }
+    
     li{
         display: flex;
         justify-content: center;
