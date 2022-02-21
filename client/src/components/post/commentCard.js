@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addComment, getPost } from '../../actions/post.action'
 import FollowHandler from '../../components/profil/followHandler'
 import { isEmpty } from '../utils'
+import CommenteGestion from './commentDelete'
 
 function Comment({ post }) {
     const [text, setText] = useState("")
@@ -10,25 +11,27 @@ function Comment({ post }) {
     const usersData = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch();
 
-    function handleComment(e){
+
+    function handleComment(e) {
         e.preventDefault();
         dispatch(addComment(post._id, userData._id, userData.pseudo, text))
-        .then(() => dispatch(getPost()))
-        .then(() => setText(''))
+            .then(() => dispatch(getPost()))
+            .then(() => setText(''))
 
     }
+
     return (
         <div className='comment-conatiner'>
             {post.comments.map((comment) => {
                 return (
                     <div className={`commentaire ${comment.commenterId === userData._id ? 'client' : 'all'}`} key={comment._id}>
                         <div className='leftComment'>
-                            
+
                             <img
                                 src={
                                     usersData[0] &&
                                     usersData.map((user) => {
-                                        if (user._id === comment.commenterId ) return user.picture;
+                                        if (user._id === comment.commenterId) return user.picture;
                                         else return null;
                                     }).join('')
                                 }
@@ -58,6 +61,7 @@ function Comment({ post }) {
                                         <FollowHandler idToFollow={comment.commenterId} />
                                     }
                                 </span>
+                                <CommenteGestion post={post} comment={comment} />
                             </div>
                             <div className='commentText'>
                                 <p>{comment.text}</p>
@@ -66,10 +70,10 @@ function Comment({ post }) {
                     </div>
                 )
             })}
-            { userData._id && (
+            {userData._id && (
                 <form onSubmit={handleComment} className='form-comment'>
-                    <input type='text' name='text' onChange={(e)=> setText(e.target.value)} value={text} placeholder="Votre commentaire..."/>
-                    <input type='submit' value='Envoyer' className='btn-add'/>
+                    <input type='text' name='text' onChange={(e) => setText(e.target.value)} value={text} placeholder="Votre commentaire..." />
+                    <input type='submit' value='Envoyer' className='btn-add' />
                 </form>
             )}
         </div>

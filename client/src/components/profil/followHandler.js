@@ -21,8 +21,8 @@ function FollowHandler({ idToFollow }) {
         if (!isEmpty(userData.following)) {
             if (userData.following.includes(idToFollow)) {
                 setIsFollowed(true);
-            } else setIsFollowed(false);
-        }
+            } else {setIsFollowed(false);}
+        }else {setIsFollowed(false);}
     }, [userData, idToFollow])
     return (
         <>
@@ -33,7 +33,7 @@ function FollowHandler({ idToFollow }) {
             )}
 
             {
-                isFollowed === false && !isEmpty(userData) &&(
+                !isFollowed && !isEmpty(userData) &&(
                     <div onClick={handleFollow} className="btn-add">
                         <button>S'abonner</button>
                     </div>
